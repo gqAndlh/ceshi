@@ -1,0 +1,48 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - HUPhotoBrowser (0.0.5)
+  - IQKeyboardManager (6.5.6)
+  - MJRefresh (3.5.0)
+  - SDWebImage (5.9.2):
+    - SDWebImage/Core (= 5.9.2)
+  - SDWebImage/Core (5.9.2)
+
+DEPENDENCIES:
+  - AFNetworking
+  - HUPhotoBrowser (~> 0.0.2)
+  - IQKeyboardManager
+  - MJRefresh
+  - SDWebImage
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - HUPhotoBrowser
+    - IQKeyboardManager
+    - MJRefresh
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  HUPhotoBrowser: aebc4701b52985392b06100cfbf7ac961a347801
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
+  SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
+
+PODFILE CHECKSUM: 5d8766d479f765c4ce1c819151d5123f3320a40d
+
+COCOAPODS: 1.10.0

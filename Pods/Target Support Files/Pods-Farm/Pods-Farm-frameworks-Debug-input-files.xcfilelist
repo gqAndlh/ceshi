@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-Farm/Pods-Farm-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
+${BUILT_PRODUCTS_DIR}/HUPhotoBrowser/HUPhotoBrowser.framework
+${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework
+${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework

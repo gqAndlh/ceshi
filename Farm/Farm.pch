@@ -1,0 +1,175 @@
+//
+//  Farm.pch
+//  Farm
+//
+//  Created by mac on 2020/12/7.
+//
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "PubLic_Class.h"
+#import "CustomNav.h"
+#import <AFNetworking/AFNetworking.h>
+#import <SDWebImage/SDWebImage.h>
+#import "PWContentView.h"
+#import <PhotosUI/PhotosUI.h>
+#
+//公共页面
+#import "CustomNav.h"
+#import "Constant.h"
+#import "NSString+isnull.h"
+#import "JGCycleCollectionView.h"
+//页面
+#import "Home_Con.h"
+#import "Category_Con.h"
+#import "FarmHome_Con.h"
+#import "ShopCar_Con.h"
+#import "Me_Con.h"
+#import "ShopDetail_Con.h"
+#import "GoodDetail_Con.h"
+#import "Search_Con.h"
+
+#ifndef Farm_pch
+#define Farm_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* Farm_pch */
+
+/**************屏幕高度宽度***************/
+#define SCREEN_HEIGHT   ([UIScreen mainScreen].bounds.size.height)
+#define SCREEN_WIDTH    ([UIScreen mainScreen].bounds.size.width)
+#define kScreenWidth  [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define windowColor  [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]
+#define FONTCOLOR [PubLic_Class colorWithHexString:@"#4FC3BC"]
+
+/**************图片缓存路径***************/
+#define PICPATH  [NSString stringWithFormat:@"%@",[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Pic"]]
+/**************视频缓存路径***************/
+#define VIDEOPATH [NSString stringWithFormat:@"%@",[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Video"]]
+
+/**************NSUserDefaults实例化***************/
+#define USER_DEFAULT    [NSUserDefaults standardUserDefaults]
+/**************DEBUG  模式下打印日志,当前行***************/
+#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = weakSelf;
+#define KApp ((AppDelegate*)[UIApplication sharedApplication].delegate)
+
+#define BACKINAMGNAME [UIImage imageNamed:@""]
+
+/**************带有RGBA的颜色设置***************/
+#define COLOR(R, G, B, A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
+
+/**************屏幕比例***************/
+#define rate SCREEN_WIDTH/375
+#define IPDRate 1.45
+
+/**************View的 X,Y,W,H***************/
+#define RectX(rect)                            rect.origin.x
+#define RectY(rect)                            rect.origin.y
+#define RectWidth(rect)                        rect.size.width
+#define RectHeight(rect)                       rect.size.height
+
+//请求失败
+#define requestFail [error.userInfo objectForKey:@"NSLocalizedDescription"]
+
+#pragma mark - 常用——LLH
+#define MYUSERDEFULTS [NSUserDefaults standardUserDefaults]
+#define isUserLogin [MYUSERDEFULTS objectForKey:CurrentUser]
+#define CurrentUser @"CurrentUser"
+#define LoginUserId [isUserLogin objectForKey:@"userId"]
+
+#define MAINCOLOR   [UIColor colorWithRed:255 green:255 blue:255 alpha:1]
+
+//引导页
+#define _isIntrolView  @"isIntrolView"
+
+//通知
+#define NotificationCenter [NSNotificationCenter defaultCenter]
+
+//URL设置
+#define BASE_URL @"https://api.qmgp.com.cn/api/v1."
+#define BASEH5_URL @"https://api.qmgp.com.cn/h5/v1."
+#define BASEpic_URL @"https://api.qmgp.com.cn"
+//
+//#define BASE_URL @"https://admin.qmgp.com.cn/api/v1."
+//#define BASEH5_URL @"https://admin.qmgp.com.cn/h5/v1."
+//#define BASEpic_URL @"https://admin.qmgp.com.cn"
+//
+//#define BASE_URL @"http://192.168.2.120/api/v1."
+//#define BASEH5_URL @"http://192.168.2.120/h5/v1."
+//#define BASEpic_URL @"http://192.168.2.120"
+
+#define CodeImg @"https://api.qmgp.com.cn/static/images/h5/sevice.png"
+
+#define SIGNKEY @"98948936546546536543545465468613213546846865489977451313216465468989456489846531565487676654989"
+
+//#define PUBLIC_URL ([[USER_DEFAULT objectForKey:XGDZ] length])>0?[USER_DEFAULT objectForKey:XGDZ]:BASE_URL
+#define PUBLIC_URL BASE_URL
+
+
+
+//字体名字
+#define fontName @""
+//字体
+#define MyFont(a) [UIFont systemFontOfSize:a*rate]
+//边距
+#define MarginSize 10*rate
+//定义UIImage对象
+#define IMAGE(A) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:A ofType:nil]]
+
+
+//判断ios11 系统的宏这样写 判断时候就不会报警告
+#define IOS11 @available(iOS 11.0, *)
+//判断是iPhoneX 的宏
+//#define Is_iPhoneX [UIScreen mainScreen].bounds.size.width == 375.0f && [UIScreen mainScreen].bounds.size.height == 812.0f
+////判断是否是iPhoneX
+//#define Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define Is_iPhoneX \
+({BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isPhoneX);})
+#define   IS_PAD (UI_USER_INTERFACE_IDIOM()== UIUserInterfaceIdiomPad)
+//iPhoneX导航高88
+#define NAVHEIGHT (Is_iPhoneX?88:64)
+#define ZTLHEIGHT (Is_iPhoneX?44:20)
+
+//tabbar高度适配
+#define TABBARHEIGHT (Is_iPhoneX?83:49)
+
+//tabbar差
+#define TAB (Is_iPhoneX?34:0)
+
+#define Nav_Back_Font_M [UIFont systemFontOfSize:14]
+#define RGB(r,g,b)      [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
+#define RGBA(r,g,b,a)      [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+#define Theme_Color_Red  RGB(231,56,55)
+#define Theme_Color_Pink RGB(255,83,123)
+#define Theme_Color_White [UIColor whiteColor]
+
+#define Theme_Color_Orange RGB(255,178,148)
+#define Theme_Color_Peach RGB(253,184,202)
+
+
+#define Theme_NavColor   RGB(255,255,255)
+
+#define Theme_TextColor RGB(55,65,75)  //
+
+//导航栏颜色
+#define kNavigationBarBg  RGB(206,8,2) //#ce0802
+
+#define KUIScreenWidth [UIScreen mainScreen].bounds.size.width
+#define KUIScreenHeight [UIScreen mainScreen].bounds.size.height
+// 1.判断是否为iOS7
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+#define ViewController_BackGround [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0]//视图控制器背景颜色
+
