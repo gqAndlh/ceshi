@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"用户设置";
+    self.title=@"用户";
     // Do any additional setup after loading the view from its nib.
 }
 - (IBAction)menuClick:(UIButton *)sender {
